@@ -117,6 +117,7 @@ public class main_class extends JFrame implements ActionListener {
         Calculator.addActionListener(this);
         utility.add(Calculator);
 
+
         JMenuItem Notepad =new JMenuItem("Notepad");
         Notepad.setBackground(Color.WHITE);
         Notepad.addActionListener(this);
@@ -146,7 +147,9 @@ public class main_class extends JFrame implements ActionListener {
 
 
         setSize(1540,850);
+        setLocationRelativeTo(null);
         setVisible(true);
+
 
     }
 
