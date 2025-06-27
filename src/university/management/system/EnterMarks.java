@@ -10,6 +10,7 @@ public class EnterMarks extends JFrame implements ActionListener {
     Choice choicerollno;
     JComboBox comboBox;
     JTextField sub1, sub2, sub3, sub4, sub5, mrk1, mrk2, mrk3, mrk4, mrk5;
+    JButton submit,cancel;
     EnterMarks(){
 
         getContentPane().setBackground(new Color(252,245,210));
@@ -62,6 +63,62 @@ public class EnterMarks extends JFrame implements ActionListener {
         entermarks.setBounds(320,150,200,40);
         add(entermarks);
 
+        sub1 = new JTextField();
+        sub1.setBounds(50,200,200,20);
+        add(sub1);
+
+        sub2 = new JTextField();
+        sub2.setBounds(50,230,200,20);
+        add(sub2);
+
+        sub3 = new JTextField();
+        sub3.setBounds(50,260,200,20);
+        add(sub3);
+
+        sub4 = new JTextField();
+        sub4.setBounds(50,290,200,20);
+        add(sub4);
+
+        sub5 = new JTextField();
+        sub5.setBounds(50,320,200,20);
+        add(sub5);
+
+
+        mrk1 = new JTextField();
+        mrk1.setBounds(250,200,200,20);
+        add(mrk1);
+
+        mrk2 = new JTextField();
+        mrk2.setBounds(250,230,200,20);
+        add(mrk2);
+
+        mrk3 = new JTextField();
+        mrk3.setBounds(250,260,200,20);
+        add(mrk3);
+
+        mrk4 = new JTextField();
+        mrk4.setBounds(250,290,200,20);
+        add(mrk4);
+
+        mrk5 = new JTextField();
+        mrk5.setBounds(250,320,200,20);
+        add(mrk5);
+
+        submit = new JButton("Submit");
+        submit.setBounds(70,360,150,25);
+        submit.setBackground(Color.BLACK);
+        submit.setForeground(Color.WHITE);
+        submit.addActionListener(this);
+        add(submit);
+
+        cancel = new JButton("Cancel");
+        cancel.setBounds(280,360,150,25);
+        cancel.setBackground(Color.BLACK);
+        cancel.setForeground(Color.WHITE);
+        cancel.addActionListener(this);
+        add(cancel);
+
+
 
         setSize(1000,500);
         setLayout(null);
@@ -72,6 +129,22 @@ public class EnterMarks extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == submit){
+            try{
+                Conn c = new Conn();
+                String Q1 = "insert into subject values('"+choicerollno.getSelectedItem()+"','"+comboBox.getSelectedItem()+"','"+sub1.getText()+"','"+sub2.getText()+"','"+sub3.getText()+"','"+sub4.getText()+"','"+sub5.getText()+"')";
+                String Q2 = "insert into marks values('"+choicerollno.getSelectedItem()+"','"+comboBox.getSelectedItem()+"','"+mrk1.getText()+"','"+mrk2.getText()+"','"+mrk3.getText()+"','"+mrk4.getText()+"','"+mrk5.getText()+"')";
+
+                c.statement.executeUpdate(Q1);
+                c.statement.executeUpdate(Q2);
+                JOptionPane.showMessageDialog(null,"Marks Inserted Successfully");
+                setVisible(false);
+
+
+            }catch (Exception E){
+                E.printStackTrace();
+            }
+        }
 
     }
 
