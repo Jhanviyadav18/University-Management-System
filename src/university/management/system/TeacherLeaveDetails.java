@@ -67,7 +67,7 @@ public class TeacherLeaveDetails extends JFrame implements ActionListener{
         add(cancel);
 
         setSize(900,700);
-        setLocation(300,100);
+        setLocationRelativeTo(null);
         setLayout(null);
         setVisible(true);
 
